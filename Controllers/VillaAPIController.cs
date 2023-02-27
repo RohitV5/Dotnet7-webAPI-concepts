@@ -1,7 +1,8 @@
 
 
 using Microsoft.AspNetCore.Mvc;
-using Villa_API_Projects.Models;
+using Villa_API_Projects.Models.Dto;
+using Villa_API_Projects.Store;
 
 namespace Villa_API_Projects.Controllers{
     //Controller class derives from ControllerBase and adds some 
@@ -14,12 +15,10 @@ namespace Villa_API_Projects.Controllers{
     [ApiController]
     public class VillaAPIController: ControllerBase
     {
+
         [HttpGet]
-        public IEnumerable<Villa>GetVillas(){
-            return new List<Villa>{
-                new Villa{Id=1,Name="Pool View"},
-                new Villa{Id=2,Name="Beach View"},
-            };
+        public IEnumerable<VillaDTO>GetVillas(){
+            return VillaStore.villaList;
         }
     }
 }
